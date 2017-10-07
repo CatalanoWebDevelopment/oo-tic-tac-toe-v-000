@@ -11,4 +11,4 @@ display_board
 
 # PLAY THE GAME
 play_game = TicTacToe.new
-play._game.play
+play_game.play

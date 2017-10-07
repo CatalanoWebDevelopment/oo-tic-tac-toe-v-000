@@ -49,22 +49,22 @@ class TicTacToe
     puts "Please enter 1-9:"
     input = gets.strip
     index = input_to_index(input)
-    if valid_move?(board, index)
-      move(board, index, current_player(board))
-      display_board(board)
+    if valid_move?(index)
+      move(index, current_player)
+      display_board
     else
-      turn(board)
+      turn
     end
   end
 
   # Define your play method below
-  def play(board)
-    while !over?(board)
-      turn(board)
+  def play
+    while !over?
+      turn
     end
 
     if won?
-      puts "Congratulations #{winner(board)}!"
+      puts "Congratulations #{winner}!"
     elsif draw?
       puts "Cat's Game!"
     end
@@ -89,7 +89,7 @@ class TicTacToe
   end
 
   # Current Player to Move
-  def current_player(board)
+  def current_player
     # BASED ON THE #turn_count METHOD, ASSUMING "X" GOES FIRST, DETERMINE WHOSE TURN IT IS
     # to use binding.pry, type in "learn" in the terminal and it will come up. Type in "board" for example
     if turn_count.even?
@@ -100,9 +100,9 @@ class TicTacToe
   end
 
   # Won Game?
-  def won?(board)
+  def won?
     winning_combo = false
-    if board == [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+    if @board == [" ", " ", " ", " ", " ", " ", " ", " ", " "]
       return false
     else
       WIN_COMBINATIONS.each do |wins|
@@ -110,7 +110,7 @@ class TicTacToe
         #wins = 2nd thing in WIN_C
         char1 = "X"
         char2 = "O"
-        if board[wins[0]] == char1 && board[wins[1]] == char1 && board[wins[2]] == char1 || board[wins[0]] == char2 && board[wins[1]] ==char2 && board[wins[2]] == char2
+        if @board[wins[0]] == char1 && @board[wins[1]] == char1 && @board[wins[2]] == char1 || @board[wins[0]] == char2 && @board[wins[1]] ==char2 && @board[wins[2]] == char2
           winning_combo = wins
         end
       end
@@ -119,24 +119,24 @@ class TicTacToe
   end
 
   # Board Full?
-  def full?(board)
-    board.none?{|spaces| spaces == " "}
+  def full?
+    @board.none?{|spaces| spaces == " "}
   end
 
   # Board Full and No Winner?
-  def draw?(board)
-    if full?(board) == true && won?(board) == false
+  def draw?
+    if full? == true && won? == false
       return true
     end
   end
 
   # Game Over?
   def over?
-    if draw?(board)
+    if draw?
       return true
-    elsif won?(board)
+    elsif won?
       return true
-    elsif full?(board)
+    elsif full?
       return true
     else
       return false
@@ -145,10 +145,10 @@ class TicTacToe
 
   # Who Won?
   def winner
-    winning_combo = won?(board)
+    winning_combo = won?
     if winning_combo
       index = winning_combo[0]
-      return board[index]
+      return @board[index]
     else
       return nil
     end

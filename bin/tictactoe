@@ -10,5 +10,5 @@ puts "Welcome to Tic Tac Toe!"
 display_board
 
 # PLAY THE GAME
-play_game = TicTacToe.new
-play_game.play
+game_1 = TicTacToe.new
+game_1.play

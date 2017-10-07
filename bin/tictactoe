@@ -7,7 +7,7 @@ board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 puts "Welcome to Tic Tac Toe!"
 
 # DISPLAYS THE EMPTY BOARD
-game_1 = TicTacToe.new
+game_1 = TicTacToe.new(board)
 game_1.display_board
 # PLAY THE GAME
 game_1.play

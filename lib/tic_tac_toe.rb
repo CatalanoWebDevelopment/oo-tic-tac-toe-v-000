@@ -1,4 +1,7 @@
 class TicTacToe
+  # Putting the nil equal to board is a "default argument" which means that, when instantiated, if the user does 
+  # not input "value.TicTacToe.new(board)" then the input will be nil and switch to the "or" statement
+  # which creates an array of " ", " ", " ", etc..
   def initialize(board = nil)
     @board = board || Array.new(9, " ")
   end

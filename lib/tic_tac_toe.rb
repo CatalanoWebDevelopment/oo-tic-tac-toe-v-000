@@ -36,6 +36,7 @@ class TicTacToe
 
   # Has the Position Been Taken?
   def position_taken?(location)
+    @location = location
     @board[location] != " " && @board[location] != ""
   end
 

@@ -6,8 +6,8 @@ require_relative '../lib/tic_tac_toe.rb'
 board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 puts "Welcome to Tic Tac Toe!"
 
-# ASK FOR USER INPUT
-display_board(board)
+# DISPLAYS THE EMPTY BOARD
+display_board
 
 # PLAY THE GAME
-play(board)
+TicTacToe.new

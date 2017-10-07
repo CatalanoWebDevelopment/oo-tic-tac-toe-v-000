@@ -35,7 +35,7 @@ class TicTacToe
   end
 
   # Has the Position Been Taken?
-  def position_taken?(board, location)
+  def position_taken?(location)
     board[location] != " " && board[location] != ""
   end
 

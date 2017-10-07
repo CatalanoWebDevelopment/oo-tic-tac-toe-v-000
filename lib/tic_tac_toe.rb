@@ -17,11 +17,11 @@ class TicTacToe
 
   # Display the Board
   def display_board(board)
-    puts " #{board[0]} | #{board[1]} | #{board[2]} "
+    puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
     puts "-----------"
-    puts " #{board[3]} | #{board[4]} | #{board[5]} "
+    puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
     puts "-----------"
-    puts " #{board[6]} | #{board[7]} | #{board[8]} "
+    puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
 
   # Change Input to Integar and Drop By One
@@ -63,19 +63,19 @@ class TicTacToe
       turn(board)
     end
 
-    if won?(board)
+    if won?
       puts "Congratulations #{winner(board)}!"
-    elsif draw?(board)
+    elsif draw?
       puts "Cat's Game!"
     end
   end
 
   # How Many Turns
-  def turn_count(board)
+  def turn_count
     # HOW MANY TURNS HAVE BEEN PLAYED?
     # turn count of 0 indicates no spaces have been filled on the board!!!
     moves = 0
-    board.each do |char|
+    @board.each do |char|
       if char == "X" || char == "O"
         moves += 1
       end
@@ -92,7 +92,7 @@ class TicTacToe
   def current_player(board)
     # BASED ON THE #turn_count METHOD, ASSUMING "X" GOES FIRST, DETERMINE WHOSE TURN IT IS
     # to use binding.pry, type in "learn" in the terminal and it will come up. Type in "board" for example
-    if turn_count(board).even?
+    if turn_count.even?
       "X"
     else
       "O"
@@ -131,7 +131,7 @@ class TicTacToe
   end
 
   # Game Over?
-  def over?(board)
+  def over?
     if draw?(board)
       return true
     elsif won?(board)
@@ -144,7 +144,7 @@ class TicTacToe
   end
 
   # Who Won?
-  def winner(board)
+  def winner
     winning_combo = won?(board)
     if winning_combo
       index = winning_combo[0]
@@ -154,6 +154,3 @@ class TicTacToe
     end
   end
 end
-
-
-
